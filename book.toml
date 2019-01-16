@@ -1,0 +1,10 @@
+[book]
+authors = ["lizr2004"]
+multilingual = false
+src = "src"
+title = "2018-2019-math"
+
+[output.html]
+mathjax-support = true
+
+[output.epub]

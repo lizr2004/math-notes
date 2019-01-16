@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>math.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<!-- TOC -->
+<ul>
+<li><a href="#201809%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86">2018.09知识梳理</a>
+<ul>
+<li><a href="#%E7%9B%B8%E4%BC%BC%E4%B8%89%E8%A7%92%E5%BD%A2">相似三角形</a>
+<ul>
+<li><a href="#%E5%B9%B3%E8%A1%8C%E7%BA%BF%E5%88%86%E7%BA%BF%E6%AE%B5%E6%88%90%E6%AF%94%E4%BE%8B%E5%AE%9A%E7%90%86">平行线分线段成比例定理</a>
+<ul>
+<li><a href="#%E6%8E%A8%E8%AE%BA-%E7%9B%B4%E7%BA%BF%E6%9D%9F%E5%AE%9A%E7%90%86">推论: 直线束定理</a></li>
+<li><a href="#%E6%8E%A8%E8%AE%BA-%E5%B9%B3%E8%A1%8C%E4%BA%8E%E4%B8%89%E8%A7%92%E5%BD%A2%E4%B8%80%E8%BE%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%E6%88%AA%E4%B8%89%E8%A7%92%E5%BD%A2%E5%8F%A6%E4%B8%A4%E8%BE%B9%E6%89%80%E5%9C%A8%E7%9A%84%E7%9B%B4%E7%BA%BF%E6%88%90%E6%AF%94%E4%BE%8B">推论: 平行于三角形一边的直线截三角形另两边所在的直线成比例</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E9%87%8D%E5%BF%83%E5%88%86%E4%B8%AD%E7%BA%BF%E4%B8%BA12%E4%B8%A4%E9%83%A8%E5%88%86">三角形重心分中线为$1:2$两部分</a></li>
+<li><a href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E8%A7%92%E5%B9%B3%E5%88%86%E7%BA%BF%E5%AE%9A%E7%90%86">三角形角平分线定理</a>
+<ul>
+<li><a href="#%E4%B8%89%E8%A7%92%E5%BD%A2%E5%A4%96%E8%A7%92%E5%B9%B3%E5%88%86%E7%BA%BF%E5%AE%9A%E7%90%86">三角形外角平分线定理</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%88%E5%88%86%E6%AF%94%E6%80%A7%E8%B4%A8">合分比性质</a></li>
+<li><a href="#%E9%BB%84%E9%87%91%E5%88%86%E5%89%B2">黄金分割</a></li>
+<li><a href="#%E5%B0%84%E5%BD%B1%E5%AE%9A%E7%90%86">射影定理</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0">反比例函数</a>
+<ul>
+<li><a href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89">函数的定义</a></li>
+<li><a href="#%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0">初等函数</a></li>
+<li><a href="#%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F">反比例函数的定义域</a></li>
+<li><a href="#%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE%E5%83%8F">反比例函数的图像</a></li>
+<li><a href="#k%E7%9A%84%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89">k的几何意义</a></li>
+<li><a href="#%E4%B8%8E%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0%E5%88%A4%E6%96%AD%E5%A4%A7%E5%B0%8F">与一次函数判断大小</a></li>
+<li><a href="#%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E7%BA%BF%E6%AE%B5%E6%88%96%E5%85%B6%E4%BB%96%E5%9B%BE%E5%BD%A2%E7%9B%B8%E4%BA%A4%E7%9A%84%E9%97%AE%E9%A2%98">反比例图像与线段或其他图形相交的问题</a>
+<ul>
+<li><a href="#%E8%BE%B9%E4%B8%8E%E5%9D%90%E6%A0%87%E8%BD%B4%E5%B9%B3%E8%A1%8C%E7%9A%84%E7%9B%B4%E8%A7%92%E4%B8%89%E8%A7%92%E5%BD%A2">边与坐标轴平行的直角三角形</a></li>
+<li><a href="#%E7%BA%BF%E6%AE%B5">线段</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A9%E7%94%A8%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%B9%E7%A7%B0%E6%80%A7">利用反比例函数的对称性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="201809%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86">2018.09知识梳理</h1>
+<h2 id="%E7%9B%B8%E4%BC%BC%E4%B8%89%E8%A7%92%E5%BD%A2">相似三角形</h2>
+<h3 id="%E5%B9%B3%E8%A1%8C%E7%BA%BF%E5%88%86%E7%BA%BF%E6%AE%B5%E6%88%90%E6%AF%94%E4%BE%8B%E5%AE%9A%E7%90%86">平行线分线段成比例定理</h3>
+<img src="1-1.png" width=200px>
+<p>如图: $AB \parallel CD \parallel EF$
+则有结论:</p>
+<ul>
+<li>
+<p>$\frac{AC}{CE} = \frac{BD}{DF}$</p>
+</li>
+<li>
+<p>$\frac{AC}{AE} = \frac{BD}{BF}$</p>
+</li>
+</ul>
+<p>证明如下:</p>
+<p>​	连接$AD, DE, BC, CF$</p>
+<p>​	<img src="1-2.png" width=200px></p>
+<p>​	$\because AB \parallel BC$</p>
+<p>​	$\therefore S_{\Delta ACD} = S_{\Delta BCD}$</p>
+<p>​	同理$S_{\Delta CDE} = S_{\Delta CDF}$</p>
+<p>​	$\therefore \frac{S_{\Delta ACD}}{S_{\Delta CED}} = \frac{S_{\Delta BCD}}{S_{\Delta CDF}}$</p>
+<p>​	$S_{\Delta ACD}$与$S_{\Delta CED}$有着共同的高$DP(DP\perp AE)$</p>
+<p>​	$\therefore \frac{S_{\Delta ACD}}{S_{\Delta CED}} = \frac{AC}{CE}$</p>
+<p>​	同理$\frac{S_{\Delta BCD}}{S_{\Delta CFD}} = \frac{BD}{DF}$</p>
+<p>​	$\therefore \frac{AC}{CE} = \frac{BD}{DF}$</p>
+<h4 id="%E6%8E%A8%E8%AE%BA-%E7%9B%B4%E7%BA%BF%E6%9D%9F%E5%AE%9A%E7%90%86">推论: 直线束定理</h4>
+<p>​	<img src="1-3.png" width=300px></p>
+<p>​	在上图中: $AB \parallel CD$</p>
+<p>​	则有结论</p>
+<ul>
+<li>$\frac{OA}{OC} = \frac{OB}{OD} = \frac{OG}{OH}$</li>
+<li>$\frac{AB}{CD} = \frac{BG}{DH} = \frac{OA}{OC}$</li>
+<li>$\frac{AB}{CD} = \frac{BG}{DH}$</li>
+</ul>
+<h4 id="%E6%8E%A8%E8%AE%BA-%E5%B9%B3%E8%A1%8C%E4%BA%8E%E4%B8%89%E8%A7%92%E5%BD%A2%E4%B8%80%E8%BE%B9%E7%9A%84%E7%9B%B4%E7%BA%BF%E6%88%AA%E4%B8%89%E8%A7%92%E5%BD%A2%E5%8F%A6%E4%B8%A4%E8%BE%B9%E6%89%80%E5%9C%A8%E7%9A%84%E7%9B%B4%E7%BA%BF%E6%88%90%E6%AF%94%E4%BE%8B">推论: 平行于三角形一边的直线截三角形另两边所在的直线成比例</h4>
+<ol>
+<li>第一种形式</li>
+</ol>
+<img src="1-4.png" width=200px>
+<p>​	如图, $BC \parallel DE$</p>
+<p>​	则有结论: $\frac{AB}{AD} = \frac{AC}{AE} = \frac{BC}{DE}$</p>
+<p>​	$(即S_{\Delta ABC} \sim S_{\Delta ADE})$</p>
+<ol start="2">
+<li>
+<p>第二种形式</p>
+<img src="1-5.png" width=200px>
+<p>此时仍有(1.)中的结论</p>
+</li>
+</ol>
+<blockquote>
+<p>例题:</p>
+<img src="1-6.png" width=200px>
+<p>如图, $D为AB中点$, 求证 $\frac{BF}{CF} = \frac{AE}{EC}$</p>
+<p>证明:</p>
+<img src="1-7.png" width=200px>
+<p>如图, 作$CG \parallel AB$ 交 $DF$ 与$G$</p>
+<p>$\because AD \parallel CG$</p>
+<p>$\therefore \frac{AE}{EC} = \frac{AD}{GC}$</p>
+<p>又$\because BD \parallel CG$</p>
+<p>$\therefore \frac{BF}{CF} = \frac{BD}{GC}$</p>
+<p>且$AD = BD$</p>
+<p>$\therefore \frac{BF}{CF} = \frac{AE}{EC}$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-8.png" width=200px>
+<p>如图, $AB \parallel EF \parallel CD$</p>
+<p>求证$\frac{1}{AB}+\frac{1}{CD}=\frac{1}{EF}$</p>
+<p>证明：</p>
+<p>$\because EF \parallel AB$</p>
+<p>$\therefore \Delta ABC \sim \Delta EFC$</p>
+<p>$\therefore \frac{EF}{AB}=\frac{CF}{BC}$</p>
+<p>同理$\frac{EF}{CD}=\frac{BF}{BC}$</p>
+<p>相加, 得</p>
+<p>$\frac{EF}{AB}+\frac{EF}{CD}=\frac{CF+BF}{BC}$</p>
+<p>$\frac{EF}{AB}+\frac{EF}{CD}=1$</p>
+<p>同时除以$EF$得</p>
+<p>$\frac{1}{AB}+\frac{1}{CD}=\frac{1}{EF}$</p>
+</blockquote>
+<h3 id="%E4%B8%89%E8%A7%92%E5%BD%A2%E9%87%8D%E5%BF%83%E5%88%86%E4%B8%AD%E7%BA%BF%E4%B8%BA12%E4%B8%A4%E9%83%A8%E5%88%86">三角形重心分中线为$1:2$两部分</h3>
+<img src="1-9.png" width=200px>
+<p>如图, $D, F, E$分别为$BC, AB, AC$的中点, 即,$O$为$\Delta ABC$的重心</p>
+<p>则有:</p>
+<p>$\frac{AO}{OD} = \frac{BO}{OE} = \frac{CO}{OF}  = \frac{2}{1}$</p>
+<p>证明如下:</p>
+<p>​	如图, 连接$FE$.</p>
+<p>​	<img src="1-10.png" width=200px></p>
+<p>​	$\because AF = BF$</p>
+<p>​	且$AE=EC$</p>
+<p>​	$\therefore$ $FE$为$\Delta ABC$的中位线</p>
+<p>​	$\therefore \frac{FE}{BC} = \frac{1}{2}, FE \parallel BC$</p>
+<p>​	$\therefore \Delta FEO \sim \Delta CBO$</p>
+<p>​	$\therefore \frac{CO}{OF} = \frac{2}{1}$</p>
+<p>​	同理可证:$\frac{AO}{OD} = \frac{BO}{OE} = \frac{CO}{OF}  = \frac{2}{1}$</p>
+<p><strong>思想: 通过中点作平行线构造中位线.</strong></p>
+<blockquote>
+<p>例题:</p>
+<img src="1-11.png" width=200px>
+<p>如图, $D$为$BC$的中点, $AD$是$\Delta ABC$的中线, $F$为$AB$上任意一点, $FC$与$AD$交于$E$.</p>
+<p>求证:</p>
+<p>$AE \times BF = 2AF \times DE$</p>
+<blockquote>
+<p>思路: 看到常数项$2$想到可以凑出$2AF$或者$2DE$但是都不容易, 考虑把$2$移项, 转而凑出$\frac{BF}{2}$, 此时我们可以通过作$DG \parallel AB$ 构造中位线得到$\frac{BF}{2}$</p>
+<p>证明</p>
+<p>作$DG \parallel AB$交$CF$于$G$<img src="1-12.png" width=200px></p>
+<p>$\because BD=DC$</p>
+<p>且$BF \parallel DG$</p>
+<p>$\therefore DG$为$\Delta BCF$的中位线</p>
+<p>$\therefore 2DG=BF$</p>
+<p>又$AB \parallel DG$</p>
+<p>$\therefore \frac{AE}{ED} = \frac{AF}{GD}$</p>
+<p>$\therefore AE \times GD = AF \times ED$</p>
+<p>其中$AF = BF = 2DG$</p>
+<p>$\therefore AE \times \frac{BF}{2} = AF \times DE$</p>
+<p>即$AE \times BF = 2AF \times DE$</p>
+</blockquote>
+<p>解法二</p>
+<blockquote>
+<p>思路: 其实非要使用$2DE$也可以, 我们知道$D$是$BC$中点, 想到倍长中线, 使用倍长中线构造$2DE$</p>
+<p>证明:</p>
+<p>作$AD$的延长线$DH$使$DH=ED$</p>
+<p>连接$BH$</p>
+<img src="1-13.png" width=200px>
+<p>$\because ED = DH$</p>
+<p>且$\angle EDC = \angle BDH$</p>
+<p>且$BD=DC$</p>
+<p>$\therefore \Delta BDH \cong \Delta CDE$</p>
+<p>$\therefore \angle DBH = \angle DCE$</p>
+<p>$\therefore FE \parallel BH$</p>
+<p>$\therefore \frac{AF}{FB} = \frac{AE}{EH}$</p>
+<p>$\therefore AF \times EH = AE \times FB$</p>
+<p>其中$EH = 2ED$</p>
+<p>$\therefore AE \times BF = 2AF \times DE$</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>例题:
+如图:</p>
+<img src="1-14.png" width=200px>
+<p>$D,E$分别是$BC$的三等分点</p>
+<p>$F$是$AC$的中点</p>
+<p>求$BP:PQ:QF$</p>
+<p>思路, 使用相等条件证明线段的位置与数量关系</p>
+<p>证明:</p>
+<p>连接$FE$<img src="1-15.png" width=200px></p>
+<p>$\because AF=FC$</p>
+<p>且$DE=EC$</p>
+<p>$\therefore FE$ 为$\Delta ADC$的中位线</p>
+<p>$\therefore FE \parallel AD$</p>
+<p>又$BD=DE$</p>
+<p>$\therefore PD$为$\Delta BFE$ 的中位线</p>
+<p>$\therefore BP=PF$</p>
+<p>设$PD=a$</p>
+<p>则$FE=2a$</p>
+<p>$\because AD \parallel EF$</p>
+<p>即$\Delta CEF \sim \Delta CDA$</p>
+<p>$\therefore \frac{DC}{EC} = \frac{AD}{EF}$</p>
+<p>$\therefore AD = \frac{DC \times EF}{EC} = 2 \times EF = 4a$</p>
+<p>$\therefore AP=3a$</p>
+<p>又$FE \parallel AD$</p>
+<p>$\therefore \Delta FEQ \sim \Delta PQA$</p>
+<p>$\therefore \frac{PQ}{QF} = \frac{AP}{FE} = \frac{3a}{2a} = \frac{3}{2}$</p>
+<p>同时$BP=PF$</p>
+<p>$\therefore BP:PQ:QF=5:3:2$</p>
+</blockquote>
+<h3 id="%E4%B8%89%E8%A7%92%E5%BD%A2%E8%A7%92%E5%B9%B3%E5%88%86%E7%BA%BF%E5%AE%9A%E7%90%86">三角形角平分线定理</h3>
+<p>如图</p>
+<img src="1-16.png" width=200px>
+<p>$AD$是$\Delta ABC$的角平分线, 有结论</p>
+<p>$\frac{AB}{AC} = \frac{BD}{DC}$</p>
+<p>证明如下</p>
+<blockquote>
+<p>例题:</p>
+<p>已知$AD$平分$\angle BAC$</p>
+<p>求证$\frac{AB}{AC} = \frac{BD}{DC}$</p>
+<p>方法一:</p>
+<blockquote>
+<p>思路, 利用中点构造中位线解题</p>
+<p>证明:</p>
+<p>作$DE \parallel AB$交$AC$于$E$</p>
+<p>如图:<img src="1-17.png" width=200px>
+$\because BD=DC$</p>
+<p>且$DE \parallel AB$</p>
+<p>$\therefore ED$为$\Delta ABC$的中位线</p>
+<p>又$\because \angle BAD = \angle DAC$</p>
+<p>且$AB \parallel DE$</p>
+<p>$\therefore \angle BAD = \angle EDA$</p>
+<p>$\therefore \angle ADE = \angle DAE$</p>
+<p>$\therefore AE=DE$</p>
+<p>且$\Delta CDE \sim \Delta CBA$</p>
+<p>$\therefore \frac{BD}{DC} = \frac{AE}{EC} = \frac{DE}{EC} =\frac{AB}{AC}$</p>
+</blockquote>
+<p>解法2:</p>
+<blockquote>
+<p>在三角形外作平行线, 证法类似1:</p>
+<p>证明:</p>
+<p>作$CE \parallel AD$交$BA$的延长线与点$E$</p>
+<img src="1-18.png" width=200px>
+<p>$\because CE \parallel AD$</p>
+<p>$\therefore \Delta BAD \sim \Delta BEC$</p>
+<p>$\therefore \angle BEC = \angle BAD$</p>
+<p>而$\angle BAD = \angle DAC$</p>
+<p>且$\angle DAC = \angle ECA$</p>
+<p>$\therefore \angle AEC = \angle ACE$</p>
+<p>$\therefore AC =AE$</p>
+<p>$\therefore \frac{BD}{DC} = \frac{BA}{AE} = \frac {BA}{AC}$</p>
+</blockquote>
+<p>解法3:</p>
+<blockquote>
+<p>思路: 等面积法, 通过作垂直利用角平分线上的点到角两边距离相等证明</p>
+<p>证明:</p>
+<p>作$DF \perp AB$于$F$, 作$DE\perp AC$于$E$</p>
+<img src="1-19.png" width=200px>
+<p>由$D$在$BC$上</p>
+<p>$\frac{S_{\Delta ADB}}{S_{\Delta ADC}}= \frac{BD}{DC}$</p>
+<p>又$\because DF \perp AB$  $DE \perp AC$</p>
+<p>且$AD$平分$\angle BAC$</p>
+<p>$\therefore DF = DE$</p>
+<p>$\therefore \frac{S_{\Delta ADB}}{S_{\Delta{ADC}}} = \frac{AB \times FD}{AC \times DE} = \frac{AB}{AC}$</p>
+<p>$\therefore \frac{S_{\Delta ADB}}{S_{\Delta ADC}} = \frac{AB}{AC} = \frac{BD}{DC}$</p>
+</blockquote>
+</blockquote>
+<p>补充:</p>
+<h4 id="%E4%B8%89%E8%A7%92%E5%BD%A2%E5%A4%96%E8%A7%92%E5%B9%B3%E5%88%86%E7%BA%BF%E5%AE%9A%E7%90%86">三角形外角平分线定理</h4>
+<p>如图</p>
+<img src="1-20.png" width=200px>
+<p>若$AE$是$\Delta ABC$的外角平分线</p>
+<p>则$\frac{BE}{EC} = \frac{AB}{AC}$</p>
+<p>证明如下:</p>
+<blockquote>
+<p>例题:</p>
+<p>已知$AE$平分$\angle BAC$的补角</p>
+<p>求证:$\frac{BE}{EC} = \frac{AB}{AC}$</p>
+<p>证明:</p>
+<p>作$EF \parallel AC$</p>
+<img src="1-21.png" width=200px>
+<p>$\because AC \parallel EF$</p>
+<p>$\therefore \Delta BAC \sim \Delta BFE$</p>
+<p>同时$AC \parallel EF$</p>
+<p>$\therefore \angle CAE = \angle AEF$</p>
+<p>且$\angle CAE = \angle EAF$</p>
+<p>$\therefore \angle AEF = \angle EAF$</p>
+<p>$\therefore AF = FE$</p>
+<p>$\therefore \frac{BE}{BC} = \frac{BF}{AB} = \frac{BF}{EF} = \frac{BA}{AC}$</p>
+</blockquote>
+<h3 id="%E5%90%88%E5%88%86%E6%AF%94%E6%80%A7%E8%B4%A8">合分比性质</h3>
+<p>若$\frac{a}{b}=\frac{c}{d}$</p>
+<p>则</p>
+<ul>
+<li>$\frac{a}{b}+k=\frac{c}{d}+k$</li>
+<li>$\frac{ak}{b}=\frac{ck}{d}$</li>
+<li>$\frac{a+c}{b+d}=\frac{a}{b}=\frac{c}{d}$</li>
+</ul>
+<h3 id="%E9%BB%84%E9%87%91%E5%88%86%E5%89%B2">黄金分割</h3>
+<img src="1-22.png" width=200px>
+<p>如图, $C$在$AB$上, 如果$C$满足:</p>
+<p>$\frac{AB}{AC} =\frac{AC}{CB}$</p>
+<p>则称$C$点是$AB$的黄金分割点</p>
+<blockquote>
+<p>例题:</p>
+<p>已知在线段$AB$上有一点$C$满足:</p>
+<p>$\frac{AB}{AC} =\frac{AC}{CB}$</p>
+<p>求$\frac{AC}{CB}$</p>
+<p>解:</p>
+<p>设$\frac{AB}{AC} =\frac{AC}{CB}=k$</p>
+<p>$AB=AC\times k$</p>
+<p>$AC = AB \times k$</p>
+<p>$AB = CB \times k^2$</p>
+<p>不妨设$AB=1$</p>
+<p>则有$AC+BC=AB$</p>
+<p>$\therefore \frac{1}{k^2}+\frac{1}{k}=1$</p>
+<p>$\therefore k=\frac{2}{-1\pm \sqrt{1+4}}$</p>
+<p>其中$k &gt; 0$</p>
+<p>$\therefore k=\frac{2}{-1+\sqrt5}=\frac{2\times (\sqrt5+1)}{4} = \frac{\sqrt5+1}{2}$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<p>如图, 等腰三角形$ABC$中, $AB=AC$, $\angle BAC=36^\circ$, $D$是$AC$上一点, $\angle CAD=36^\circ$</p>
+<img src="1-23.png" width=200px>
+<p>求证: $D$点黄金分割$AC$</p>
+<p>证明:</p>
+<p>$\angle ABC=\angle ACB=72^\circ$</p>
+<p>$\angle BDC = 72^\circ$</p>
+<p>$BC=BD=DA$</p>
+<p>$\because \angle A=\angle DBC=36^\circ$</p>
+<p>且$\angle ACB=\angle BCD$</p>
+<p>$\therefore \Delta ABC \sim \Delta BCD$</p>
+<p>设$BC=a$</p>
+<p>则$\frac{BC}{DC}=\frac{AB}{BC}$</p>
+<p>$\therefore AB=\frac{a^2}{DC}$</p>
+<p>而$AB=AC=AD+DC$</p>
+<p>$\therefore a^2=a \times DC+DC^2$</p>
+<p>即$\frac{a}{DC}=\frac{a+DC}{a}$</p>
+<p>所以$D$黄金分割$AC$</p>
+</blockquote>
+<h3 id="%E5%B0%84%E5%BD%B1%E5%AE%9A%E7%90%86">射影定理</h3>
+<address>关于直角三角形的相似</address>
+<img src="1-24.png" width=200px>
+<p>如图, $CD\perp AB$,$AC \perp CB$则</p>
+<p>$\Delta ADC \sim \Delta CDB \sim \Delta ACB$</p>
+<p>$AC^2=AD\times AB$</p>
+<p>$BC^2=DB \times AB$</p>
+<p>$CD^2=DB\times AD$</p>
+<p>证明:</p>
+<blockquote>
+<p>$\because \angle A=90^\circ -\angle ACD = \angle DCB$</p>
+<p>且$\angle ADC = \angle CDB = 90^\circ$</p>
+<p>$\therefore \Delta CDB \sim \Delta ADC$</p>
+<p>又$\angle CAB=\angle DAC$</p>
+<p>且$\angle CDA=\angle BCA$</p>
+<p>$\therefore \Delta ADC \sim \Delta ACB$</p>
+<p>$\therefore \frac{AC}{AD}=\frac{AB}{AC}$</p>
+<p>$\therefore AC^2=AB\times AD$</p>
+<p>同理可证$CB^2=DB\times AB$</p>
+<p>又有$\Delta CDB \sim \Delta ADC$</p>
+<p>$\therefore \frac{AD}{CD}=\frac{CD}{DB}$</p>
+<p>$\therefore CD^2 = AD\times DB$</p>
+</blockquote>
+<blockquote>
+<img src="1-25.png" width=200px>
+<p>如图, $\frac{AB}{BC}=\frac{5}{6}$, $BC=6EC$, $5FC=3CD$, $FG \perp AE$于$G$,</p>
+<p>求证: $AG=4GE$</p>
+<p>解法一:</p>
+<blockquote>
+<p>证明:</p>
+<p>设$AB=5a$</p>
+<p>则$BC = AD=6a$</p>
+<p>$BE=5a, EC=a$</p>
+<p>$DF=2a, FC=3a$</p>
+<p>$AF^2=AD^2+DF^2 = 36a^2+4a^2=40a^2$</p>
+<p>$EF^2=EC^2+FC^2=a^2+9a^2=10a^2$</p>
+<p>$AE^2=AB^2+BE^2=25a^2+25a^2=50a^2$</p>
+<p>$\therefore AF^2+EF^2=AE^2$</p>
+<p>$\therefore AF \perp EF$</p>
+<p>$\therefore \Delta AGF \sim \Delta FGE$</p>
+<p>而$\frac{AF}{EF}=\sqrt{\frac{AF^2}{EF^2}}=2$</p>
+<p>$\therefore \frac{AG}{AF}= \frac{GF}{FE}$</p>
+<p>$\therefore \frac{AG}{GF} = \frac{AF}{FE}=2$</p>
+<p>同理$\frac{GF}{GE}=2$</p>
+<p>$\therefore \frac{AG}{GF}\times \frac{GF}{GE}=\frac{AG}{GE}=2\times 2=4$</p>
+<p>$\therefore AG=4GE$</p>
+</blockquote>
+<p>解法2:</p>
+<blockquote>
+<p>同1得到$\angle AFE=90^\circ$</p>
+<p>由射影定理得</p>
+<p>$\frac{AF^2}{EF^2}=\frac{AG \times AE}{EG \times AE}=\frac{AG}{EG}=\frac{4}{1}$</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-26.png" width=200px>
+<p>如图, $BD$平分$\angle ABC$, $CD$平分$\angle ACB$, $AE=AF$</p>
+<p>求证$EF^2=4BE\times CF$</p>
+<p>证明:</p>
+<img src="1-27.png" width=200px>
+<p>$\because BD, CD$交于$D$</p>
+<p>$\therefore AD$平分$\angle BAC$</p>
+<p>且$AE = AF$</p>
+<p>$\because \angle AEF = 180^\circ -\angle BED$</p>
+<p>$\because \angle EFA = 180^\circ -\angle CFD$</p>
+<p>$\therefore 2\alpha + 2\beta + 360^\circ = 360^\circ + \angle BED + \angle CFD$</p>
+<p>$\therefore \angle BED=\angle CFD=\alpha+ \beta$</p>
+<p>$\therefore \angle EDB =\beta，\angle FDC = \alpha$</p>
+<p>$\therefore \Delta BED \sim \Delta DFC$</p>
+<p>$\therefore\frac{BE}{ED}=\frac{DF}{FC}$</p>
+<p>$\therefore BE \times CF = DF \times ED = \frac{EF}{2}\times \frac{EF}{2}=\frac{EF^2}{4}$</p>
+<p>$\therefore EF^2 = 4BE\times CF$</p>
+</blockquote>
+<blockquote>
+<p>例题：</p>
+<img src="1-28.png" width=200px>
+<p>如图, $AB=AC​$, $BD= DC​$, $P​$是$AD​$上一动点, $CF \parallel AB​$</p>
+<p>求证$BP^2=PE\times PF$</p>
+<p>证明:</p>
+<p>连接$CP$,</p>
+<p>$\because \angle PEC = \angle BAE + \angle ABE$</p>
+<p>且$\angle PCF=\angle PCE + \angle ECF$</p>
+<p>而$AB \parallel CF$</p>
+<p>$\therefore \angle ECP= \angle BAE$</p>
+<p>$\therefore \angle PEC = \angle BAE + \angle ABE = \angle ECF + \angle ACP = \angle PCF$</p>
+<p>$\therefore \angle PEC=\angle PCF$</p>
+<p>且$\angle FPC = \angle CPE$</p>
+<p>$\therefore \Delta PEC \sim \Delta PCF$</p>
+<p>$\therefore \frac{PE}{PC} = \frac{PC}{PF}$</p>
+<p>$\therefore PC^2 = PE \times PF$</p>
+<p>而$PC=PB$</p>
+<p>$\therefore BP^2 = PE \times PF$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-29.png" width=200px>
+<p>$\angle ACB=90^\circ$, $CD \perp AB$, $FH \perp AB$, $AC \perp CB$,$CF=3$, $FB=12$</p>
+<p>求$FH$的长</p>
+<p>解:</p>
+<p>延长$AC$的到G, 使$GH \parallel CD$, 连接$GF$</p>
+<p>$\because CD \parallel GH$</p>
+<p>且$DE=CE$</p>
+<p>$\therefore FH = FG$</p>
+<p>$\because \angle BFH=\angle GFC$</p>
+<p>且$\angle GCF=\angle BHF$</p>
+<p>$\therefore \Delta GCF \sim \Delta BHF$</p>
+<p>$\therefore \frac{CF}{FG}=\frac{HF}{BF}$</p>
+</blockquote>
+<blockquote>
+<p>例题：</p>
+<img src="1-30.png" width=200px>
+<p>如图, $AC \perp CB$, $AF$平分$\angle CAB$交$CD$于$E$交$CB$于$F$, $EG \parallel AB$</p>
+<p>求证:</p>
+<ul>
+<li>$\frac{CE}{ED}=\frac{BF}{FC}$</li>
+<li>$BF\times BG=CG\times CF$</li>
+<li>$CF=BG$</li>
+<li>$\frac{AE}{EF}=\frac{AC}{EG}$</li>
+</ul>
+<p>证明:</p>
+<p>$\because AF$平分$\angle CAB$</p>
+<p>$\therefore \frac{CF}{FB}=\frac{AC}{AB}$</p>
+<p>且$\therefore \frac{CE}{ED}=\frac{AC}{AD}$</p>
+<p>又$CD \perp AB, AC \perp CB$</p>
+<p>且$\angle CAB=\angle DAC$</p>
+<p>$\therefore \Delta ACD \sim \Delta ABC$</p>
+<p>$\therefore \frac{CA}{AD}=\frac{AB}{AC}$</p>
+<p>$\therefore \frac{CE}{ED}=\frac{BF}{CF}$</p>
+<p>$\because EG \parallel AB$</p>
+<p>$\therefore \Delta CEG \sim \Delta CDB$</p>
+<p>$\therefore \frac{CE}{ED}=\frac{CG}{GB}$</p>
+<p>而$\frac{CE}{ED}=\frac{BF}{FC}$</p>
+<p>$\therefore \frac{CG}{GB}=\frac{BF}{FC}$</p>
+<p>即$CG \times FC = BF \times GB$</p>
+<p>由和比性质:$\therefore \frac{CG}{BC}=\frac{BF}{BC}$</p>
+<p>$\therefore CG=BF$</p>
+<p>又有$\angle EAC = \angle EAD$</p>
+<p>且$\angle EAD = \angle FEG$</p>
+<p>$\angle FGE = \angle FBD$</p>
+<p>$\angle ACD = 90^\circ -\angle CAD = \angle CBD$</p>
+<p>$\therefore \angle FGE = \angle ACE$</p>
+<p>且$\angle CAE = \angle FEG$</p>
+<p>$\therefore \Delta AEC \sim \Delta EFG$</p>
+<p>$\therefore \frac{AE}{EF} = \frac{AC}{EG}$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-31.png" width=200px>
+<p>如图, $D$为$BC$中点, G为$\Delta ABC$的重心,$GF \parallel AC$</p>
+<p>已知$S_{\Delta ABC}=36$, 求$S_{\Delta DGF}$</p>
+<p>解:</p>
+<p>$\because G$为重心</p>
+<p>$\therefore S_{\Delta ADC} = \frac{1}{2} S_{\Delta ABC} = 18$</p>
+<p>$且 \frac{AG}{GD}=\frac{2}{1}$</p>
+<p>$\therefore S_{\Delta DFG} = \frac{1}{3^2} S_{\Delta ADC} = 2$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-32.png" width=200px>
+<p>$Rt\Delta ABC中$, $\angle ACB=90^\circ$, $CM=MB$, $CN \perp AM于N$</p>
+<p>求证:</p>
+<p>$\angle MAB = \angle MBN$</p>
+<p>$\because AC \perp CM$</p>
+<p>$\therefore \Delta MCN \sim \Delta MAC$</p>
+<p>$\therefore \frac{MN}{CM} = \frac{CM}{AM}$</p>
+<p>而$CM=MB$</p>
+<p>$\therefore \frac{MN}{MB} = \frac{MB}{AM}$</p>
+<p>且$\angle NMB = \angle BMA$</p>
+<p>$\therefore \Delta MBN \sim \Delta MAB$</p>
+<p>$\angle MAB = \angle MBN$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-33.png" width=200px1>
+<p>在$\Delta ABC$中, $\angle BAC=90^\circ$, $AD \perp BC$, $DE \perp AB$, $DF \perp AC$</p>
+<p>求证:</p>
+<ul>
+<li>$AE : EB = AC^2 : AB^2$</li>
+<li>$BE : CF = AB^3 : AC^3$</li>
+<li>$AD^3 = BC \times BE \times CF$</li>
+</ul>
+<p>证明:</p>
+<p>$\because AD \perp BC, DE \perp AB, DF \perp AC$</p>
+<p>$\therefore \Delta BED \sim \Delta BAC$</p>
+<p>$\therefore \frac{AE}{EB} = \frac{DC}{BD}$</p>
+<p>由射影定理得:</p>
+<p>$\therefore AB^2 = BD \times BC, AC^2 = DC \times BC$</p>
+<p>$\therefore \frac{AE}{EB} = \frac{DC}{BD} = \frac{DC \times BC}{BD \times BC} = \frac{AC^2}{AB^2}$</p>
+<p>看到(2)中的三次方,考虑使用四次方并消去一个</p>
+<p>$\frac{AB^4}{AC^4} = \frac{BD^2 \times BC^2}{DC^2 \times BC^2} = \frac{BD^2}{DC^2}=\frac{BE \times AB}{CF \times AC}$</p>
+<p>即$\frac{AB^3}{AC^3} = \frac{BE}{CF}$</p>
+<p>对于(3)中的结论,也可以使用先算四次方并消去的方法.</p>
+<p>$\space AD^4$</p>
+<p>$= BD^2 \times DC^2$</p>
+<p>$= BE \times AB \times CF \times AC$</p>
+<p>$= BE \times CF \times (AC \times AB)$</p>
+<p>由等面积法,可得 $AC \times AB = AD \times BC$</p>
+<p>$AD^4 = BE \times CF \times AD \times BC$</p>
+<p>即$AD^3 = BE \times CF \times BC$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-34.png" width=200px>
+<p>$AD$是$\angle A$的角平分线, $AD$的中垂线$EF$与$AD$交于$E$</p>
+<p>求证:</p>
+<ul>
+<li>$\frac{BD}{CD}=\frac{BF}{DC}$</li>
+<li>$BC=4, CF=3$时, 求$DF$</li>
+</ul>
+<p>看到$\frac{BD}{CD}$想到使用角平分线定理</p>
+<p>$\frac{BD}{CD} = \frac{AB}{AC} = \frac{BF}{DC}$</p>
+<p>类似&quot;母子相似&quot;的结论, 考虑连接 $AF$ 证明$\Delta FBA \sim \Delta FAC$</p>
+<p>证明:</p>
+<p>连接$AF$, 如图所示</p>
+<img src="1-35.png" width=200px>
+<p>$\because EF$垂直平分$AD$</p>
+<p>$\therefore FA = FD, \angle FAD = \angle FDA$</p>
+<p>又有$AD$平分$\angle CAB$</p>
+<p>即$\angle CAD = \angle DAB$</p>
+<p>$\therefore \angle FAD - \angle CAD = \angle FDA - \angle BAD$</p>
+<p>$\therefore \angle ABC = \angle CAF$</p>
+<p>且$\angle AFC = \angle BFA$</p>
+<p>$\therefore \Delta FAC \sim \Delta FBA$</p>
+<p>$\frac{AC}{AB} = \frac{FA}{FB}$</p>
+<p>同时$FA = FD$</p>
+<p>$\frac{AC}{AB} = \frac{FD}{FB}$</p>
+<p>$\frac{AB}{AC} = \frac{BD}{CD}$</p>
+<p>从而得出结论</p>
+<p>$\frac{BD}{CD} = \frac{FB}{FD}$</p>
+<p>对于第二问,可以使用第一问的相似继续证明.</p>
+<p>$\frac{AF}{BF} = \frac{CF}{AF}$</p>
+<p>$AF^2 = BF \times CF$</p>
+<p>$\therefore DF = AF = \sqrt{BF \times CF} = \sqrt{21}$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="1-36.png" width=200px>
+<p>在如图所示的三角形中, 满足, $\angle ACB = 2 \angle B$</p>
+<p>求证:</p>
+<p>$AB^2 = AC^2 + AC \times BC$</p>
+<p>以$A$为圆心, $AC$为半径,画弧交$BC$于D, 作$AE \perp BC$于$E$</p>
+<img src="1-37.png" width=200px>
+<p>在等腰三角形$\Delta ADC$中, $AC = AD$, $\angle ADC =\angle ACD$</p>
+<p>$\therefore \angle ADC = \angle ABC + \angle DAB = 2\angle B$</p>
+<p>$\therefore \angle ABD = \angle DAB$</p>
+<p>$\therefore BD = DA = AC$</p>
+<p>$\therefore AB^2 = AE^2 + BE^2$</p>
+<p>$= BD^2 + DE^2 + 2BD \times DE + AE^2$</p>
+<p>$= AD^2 + BD^2 + 2BD \times DE$</p>
+<p>$= AD^2 + BD \times (BD + 2DE)$</p>
+<p>$= AD^2 + BD \times (BD + DC)$</p>
+<p>$= BD \times BC + AD^2$</p>
+<p>$= AC^2 + AC \times BC$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<p>在边长为$2cm$的正方形$ABCD$中, 动点$E,F$分别从$D,C$两点同时出发, 均以$1cm/s$的速度在射线$DC$, $CB$上运动, 连接$AE$与$DF$交于点$P$, $Q$是$AD$的中点, 若以$APQ$为顶点的三角形与$PDC$为顶点的三角形相似, 运动时间为?</p>
+<p>分析:</p>
+<p>如图<img src="1-38.png" width=200px></p>
+<p>通过证明$\Delta DFC \cong \Delta AED$易证$PF \perp AE$</p>
+<p>$\because PE \perp AE$</p>
+<p>$\therefore AQ = QD = QP$</p>
+<p>$\Delta APQ$为等腰三角形</p>
+<p>当条件满足时$\Delta DPC$一定是等腰三角形</p>
+<p>可以通过分类讨论哪两条边相等进而解决问题</p>
+<p>分类讨论:</p>
+<ul>
+<li>$PC = PD$</li>
+</ul>
+<blockquote>
+<p>此时$P$在$CD$的垂直平分线上</p>
+<p>而P是交点, 此时$t=2$</p>
+</blockquote>
+<ul>
+<li>$PC = CD$</li>
+</ul>
+<blockquote>
+<p>此时$E在C下方$</p>
+<p>如图:</p>
+<img src="1-39.png" width=300px>
+<p>$\because \Delta DPE$为直角三角形</p>
+<p>$\therefore CE = CD = 2cm</p>
+<p>$t=4$</p>
+</blockquote>
+<ul>
+<li>$PD = CD$</li>
+</ul>
+<blockquote>
+<p>不存在, 舍去</p>
+</blockquote>
+<p>总结:</p>
+<p>P点的轨迹如图所示</p>
+<img src="1-40.png" width=200px>
+<img src="1-41.png" width=200px>
+<p>$P$所在的圆弧与满足DPC是等腰三角形的&quot;两圆一线&quot;有两个交点(A点不可能达到), 即两种情况</p>
+</blockquote>
+<h2 id="%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0">反比例函数</h2>
+<h3 id="%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89">函数的定义</h3>
+<p>两个变量, 每个自变量的取值对应且仅对应一个因变量的取值.</p>
+<address>不是所有函数都有解析式!!!</address>
+<h3 id="%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0">初等函数</h3>
+<ul>
+<li>$y=kx+b$</li>
+<li>$y=\frac{k}{x}$</li>
+<li>$y=ax^2+bx+c$</li>
+</ul>
+<p>等</p>
+<h3 id="%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89%E5%9F%9F">反比例函数的定义域</h3>
+<p>定义域: $x \ne 0$</p>
+<p>值域: $y \ne 0$</p>
+<h3 id="%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%BE%E5%83%8F">反比例函数的图像</h3>
+<p>如图:</p>
+<img src="2-1.png" width=200px>
+<ul>
+<li>
+<p>是双曲线 (有两支)</p>
+</li>
+<li>
+<p>关于原点中心对称, 关于每个象限的角平分线($y=x$与$y=-x$)对称</p>
+</li>
+<li>
+<p>$k&gt;0$时, 函数在一三象限</p>
+<p>$k&lt;0$时, 函数在二三象限</p>
+</li>
+<li>
+<p>$k&gt;0$时, y随x的增大而减小</p>
+<p>$k&lt;0$时, y随x的减小而增大</p>
+<p><strong>前提条件: 在每个象限内!!!</strong></p>
+</li>
+<li>
+<p>$\left|{k}\right|$越大, 图像越远离原点</p>
+</li>
+<li>
+<p>双曲线无限逼近坐标轴, 但并不相交</p>
+</li>
+</ul>
+<h3 id="k%E7%9A%84%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89">k的几何意义</h3>
+<img src="2-2.png" width=200px>
+<p>如图$S_{\square ABOC} = \left| ab \right| = \left| k \right|$</p>
+<blockquote>
+<p>例题:</p>
+<img src="2-6.png" width=200px>
+<p>$OA_1 = A_1A_2 = A_2A_3$, 分别过$A_1/A_2/A_3$作y轴的平行线, 与反比例函数$y=\frac{4}{x}$交于$B_1/B_2/B_3$, 再作关于x轴的平行线,交x轴于$C_1/C_2/C_3$, 求图中阴影面积之和</p>
+<p>$S_1 = \frac{k}{2} = 2$</p>
+<p>$S_2 = \frac{k}{2} \times \frac{S_{\Delta B_2C_2O}}{S_{\Delta B_2AD}} = 2 \times (\frac{A_1A_2}{OA_2})^2 = \frac{1}{2}$</p>
+<p>同理$S_3 = 2 \times (\frac{A_2A_3}{OA_3})^2 = \frac{2}{9}$</p>
+<p>$S = S_1 + S_2 + S_3 = 2 + \frac{1}{2} + \frac{2}{9}$</p>
+</blockquote>
+<ul>
+<li>$S_\square=\left| k \right|$</li>
+<li>点$p$在双曲线上运动, 而$S_\square$不变</li>
+<li>$S_{Rt\Delta OAB} = S_{Rt\Delta OAC} = \frac{\left| k \right|}{2} = \frac{49}{18}$</li>
+</ul>
+<img src="2-3.png" width=200px>
+<ul>
+<li>$S_{\Delta OAB} = S_{\square ABDC}$</li>
+</ul>
+<blockquote>
+<p>证明如下:</p>
+<p>$S_{\Delta OAC} = S_{\Delta OBD}$</p>
+<p>同时减去$S_{\Delta OFC}$</p>
+<p>$S_{\Delta OFA} = S_{\square FCDB}$</p>
+<p>同时加上$S_{\Delta AFB}$</p>
+<p>$S_{\Delta OAB} = S_{\square ABDC}$</p>
+</blockquote>
+<blockquote>
+<p>例题:</p>
+<img src="2-13.png" width=200px>
+<p>$\frac{AO}{AB} = \frac{2}{3}$, $S_{\Delta BOD} = 32$</p>
+<p>求$y=\frac{k}{x}$</p>
+<p>解:</p>
+<p>作$AE \perp OC$于点$E$</p>
+<p>$\because AE \perp OC, BC \perp OC$</p>
+<p>$\therefore AE \parallel BC$</p>
+<p>$\therefore \Delta OEA \sim \Delta OCB$</p>
+<p>又有$\frac{OA}{AB} = \frac{2}{3}$</p>
+<p>$\therefore \frac{S_{\Delta OEA}}{S_{\Delta OCB}} = \frac{4}{25}$</p>
+<p>$\therefore S_{\Delta ADB} = S_{\Delta OAD} + S_{\Delta ADB} = S_{\square ADCE} + S_{\Delta ADB} = S_{\square ABCE}$</p>
+<p>$\therefore \frac{S_{\Delta OEA}}{S_{\square ABCE}} = \frac{4}{21}$</p>
+<p>$\therefore S_{\Delta OEA} = S_{\square ABCD} \times \frac{4}{21} = 4$</p>
+<p>$\therefore k = 2 \times \Delta OEA = 8$</p>
+<p>故而$y = \frac{8}{x}$</p>
+</blockquote>
+<blockquote>
+<p>例题</p>
+<img src="2-14.png" width=200px>
+<p>$OB=4, OA=3$, 反比例函数$y=\frac{k}{x}$交$AC$与$E$, 交$CB$于$F$</p>
+<ol>
+<li>求证$S_{\Delta AOE} = S_{\Delta BOF}$</li>
+<li>$S = S_{\Delta OEF} - S_{\Delta ECF}$, 求$k$为何值时, $S$取得最大值, 最大值是多少?</li>
+</ol>
+<p>证明:</p>
+<p>$S_{\Delta AOE} = \frac{k}{2}$</p>
+<p>$S_{\Delta BOF} = \frac{k}{2}$</p>
+<p>设 $E(\frac{k}{3}, 3)$ $F(4, \frac{k}{4})$</p>
+<p>$S_{\Delta OEF} = (4-\frac{k}{3})(3+\frac{k}{4})\times \frac{1}{2}$</p>
+<p>$S_{\Delta ECF} = (4-\frac{k}{3})(3-\frac{k}{4})\times \frac{1}{2}$</p>
+<p>$S = k - \frac{k^2}{12} = -\frac{1}{12}(k^2 - 12k + 36) + 3 = -\frac{1}{12}(k-6)^2 + 3$</p>
+<p>当$k=6$时, $S$取得最小值为$3$</p>
+</blockquote>
+<ul>
+<li>下图中, 如果$A$为$CE$中点, 则$B$为$CE$中点
+<ul>
+<li>扩展: $\frac{EB}{BD} = \frac{AE}{CA}$</li>
+</ul>
+</li>
+</ul>
+<img src="2-4.png" width=200px>
+<blockquote>
+<p>证明:</p>
+<p>如图:</p>
+<img src="2-5.png" width=200px>
+<p>$S_{\square OFAC} = S_{\square ODBH}$</p>
+<p>同时使用$S_{ODEC}$减去</p>
+<p>得到$S_{\square HBEC} = S_{\square FDEA}$</p>
+<p>$S_{\square HBEC}$与$S_{\square ODBH}$有着相同的长</p>
+<p>$\frac{S_{\square HBEC}}{S_{\square ODBH}} = \frac{BE}{DB}$</p>
+<p>同理$\frac{S_{\square FDEA}}{S_{\square OFAC}} = \frac{AE}{CA}$</p>
+<p>$\frac{AE}{CA} = \frac{S_{\square FDEA}}{S_{\square OFAC}} = \frac{S_{\square HBEC}}{S_{\square ODBH}} = \frac{BE}{DB}$</p>
+</blockquote>
+<h3 id="%E4%B8%8E%E4%B8%80%E6%AC%A1%E5%87%BD%E6%95%B0%E5%88%A4%E6%96%AD%E5%A4%A7%E5%B0%8F">与一次函数判断大小</h3>
+<ol>
+<li>类似下图的</li>
+</ol>
+<img src="2-7.png" width=200px>
+<p>即
+$y_1 = \frac{4}{x}$</p>
+<p>$y_2 = 3x + 4$</p>
+<p>应当分段考虑, 将$x &gt; 0$时$y_2$的函数值与$y_1$的上半段比较:</p>
+<table>
+<thead>
+<tr>
+<th>自变量</th>
+<th>因变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$x&gt;\frac{2}{3}$</td>
+<td>$y_1&lt;y_2$</td>
+</tr>
+<tr>
+<td>$x=\frac{2}{3}$</td>
+<td>$y_1=y_2$</td>
+</tr>
+<tr>
+<td>$0&lt;x&lt;\frac{2}{3}$</td>
+<td>$y_1&gt;y_2$</td>
+</tr>
+<tr>
+<td>$-2&lt;x&lt;0$</td>
+<td>$y_1&lt;y_2$</td>
+</tr>
+<tr>
+<td>$x=-2$</td>
+<td>$y_1=y_2$</td>
+</tr>
+<tr>
+<td>$x&lt;-1$</td>
+<td>$y_1&gt;y_2$</td>
+</tr>
+</tbody>
+</table>
+<p>对于$x&lt;0$的类似处理</p>
+<ol start="2">
+<li>类似下图的</li>
+</ol>
+<img src="2-8.png" width=200px>
+<p>$y_1 = \frac{4}{x}$</p>
+<p>$y_2 = -x + 8$</p>
+<table>
+<thead>
+<tr>
+<th>自变量</th>
+<th>因变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$x&lt;0$</td>
+<td>$y_2&gt;y_1$</td>
+</tr>
+<tr>
+<td>$x&lt;4-2\sqrt3$</td>
+<td>$y_2 &lt; y_1$</td>
+</tr>
+<tr>
+<td>$x=4-2\sqrt3$</td>
+<td>$y_2 = y_1$</td>
+</tr>
+<tr>
+<td>$4+2\sqrt3&gt;x&gt;4-2\sqrt3$</td>
+<td>$y_2 &lt; y_1$</td>
+</tr>
+<tr>
+<td>$x=4+2\sqrt3$</td>
+<td>$y_2 = y_1$</td>
+</tr>
+<tr>
+<td>$x&gt;4+2\sqrt3$</td>
+<td>$y_2 &gt; y_1$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%9B%BE%E5%83%8F%E4%B8%8E%E7%BA%BF%E6%AE%B5%E6%88%96%E5%85%B6%E4%BB%96%E5%9B%BE%E5%BD%A2%E7%9B%B8%E4%BA%A4%E7%9A%84%E9%97%AE%E9%A2%98">反比例图像与线段或其他图形相交的问题</h3>
+<h4 id="%E8%BE%B9%E4%B8%8E%E5%9D%90%E6%A0%87%E8%BD%B4%E5%B9%B3%E8%A1%8C%E7%9A%84%E7%9B%B4%E8%A7%92%E4%B8%89%E8%A7%92%E5%BD%A2">边与坐标轴平行的直角三角形</h4>
+<blockquote>
+<p>例题:</p>
+<img src="2-10.png" width=200px>
+<p>如图$A(1,4), B(4,1), C(4,4)$</p>
+<p>$y=\frac{k}{x}$ 与三角形有焦点，求$k$的取值范围</p>
+<p>函数经过A点时, $k=4$</p>
+<p>函数经过B点时, $k=4$</p>
+<p>函数经过C点时, $k=16$</p>
+<p>$$
+\begin {cases}
+​      k &gt; 4 \
+​      k &gt; 4 \
+​      k &lt; 16
+\end {cases}$$</p>
+<p>$\therefore 4 &lt; k &lt; 16$</p>
+</blockquote>
+<p>总结:</p>
+<ul>
+<li>对于每个顶点求出反比例函数经过时$k$的取值</li>
+<li>联立不等式求解</li>
+</ul>
+<h4 id="%E7%BA%BF%E6%AE%B5">线段</h4>
+<blockquote>
+<p>例题:</p>
+<p>已知点$A(1,2)$点$B(4,1)$, 若反比例函数$y=\frac{n}{x}$的图像与线段$AB$有公共点, 求$n$的取值范围</p>
+<p>思路:考虑函数经过端点的情况和线段时函数的切线的情况</p>
+<p>解答:</p>
+<p>函数经过$A$点时, $n=2$</p>
+<p>函数经过$B$点时, $n=4$</p>
+<p>线段所在的直线是反比例函数的切线时</p>
+<p>$y=-\frac{1}{3}x+\frac{7}{3}$ 与函数 $y=\frac{n}{x}$有且仅有一个交点</p>
+<p>$x^2 - 7x + 3n = 0$</p>
+<p>$\Delta = 49 - 4 \times 3n = 49 - 12n$</p>
+<p>$\Delta = 0$时, 两个函数有且仅有一个交点</p>
+<p>$n = \frac{49}{12}$</p>
+<p>此时交点的横坐标$1 &lt; \frac{7}{2} &lt; 4$, 在线段$AB$上</p>
+<p>有:</p>
+<p>$$
+\begin {cases}
+n \le 2 \
+n \le 4 \
+n \ge \frac{49}{12}
+\end {cases}
+$$</p>
+<p>得到: $2 \le n \le \frac{49}{12}​$</p>
+</blockquote>
+<p>总结:
+对于线段来说</p>
+<ul>
+<li>取反比例函数经过两个端点时$k$的值</li>
+<li>取该线段所在的直线是反比例函数的切线时$k$的值 (条件: 交点在线段上)</li>
+<li>联立不等式, 求出$k$的取值范围</li>
+</ul>
+<h3 id="%E5%88%A9%E7%94%A8%E5%8F%8D%E6%AF%94%E4%BE%8B%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%B9%E7%A7%B0%E6%80%A7">利用反比例函数的对称性</h3>
+<blockquote>
+<p>例题:</p>
+<img src="2-11.png" width=200px>
+<p>如图, 一次函数与反比例函数交于$A,B$, 与坐标轴交于$M,N$, $A,B$向坐标轴作垂线, 交坐标轴于$C,D,E,F$.</p>
+<p>求证:</p>
+<ul>
+<li>$S_{\square AEDK} = S_{\square CFBK}$</li>
+<li>$AN = BM$</li>
+</ul>
+<p>证明:</p>
+<p>$\because S_{\square AEOC} = S_{\square BDOF} = k$</p>
+<p>$\therefore S_{\square AEOC} - S_{\square DKCO} = S_{\square BDOF} - S_{\square DKCO}$</p>
+<p>$\therefore S_{\square AEDK} = S_{\square BKCF}$</p>
+<p>连接 $DC, AD, BC$</p>
+<img src="2-12.png" width=200px>
+<p>$\because S_{\Delta ADK} = S_{\Delta BKC} = \frac{S_{\square AEDK}}{2}$</p>
+<p>$\because S_{\Delta DKC} = S_{\Delta DKC}$</p>
+<p>$\therefore S_{\Delta DCA} = S_{\Delta DCB}$</p>
+<p>$\therefore DC \parallel AB$</p>
+<p>$\therefore AC \parallel y轴$</p>
+<p>$\therefore \square ANDC为平行四边形$</p>
+<p>$同理 \square BMCD为平行四边形$</p>
+<p>$\therefore DC = AN$</p>
+<p>$\therefore DC = BM$</p>
+<p>$\therefore AN = BM$</p>
+</blockquote>
+
+</body>
+</html>
