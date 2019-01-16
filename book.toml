@@ -7,4 +7,3 @@ title = "2018-2019-math"
 [output.html]
 mathjax-support = true
 
-[output.epub]

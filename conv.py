@@ -10,6 +10,8 @@ MathJax.Hub.Config({
 '''
 
 def conv(ifile, ofile):
+    ifile = 'real-src/' + ifile
+    ofile = 'src/' + ofile
     with open(ifile, 'r') as inp: 
         with open('/tmp/convwork.md', 'w') as out: 
             out.write(append)
@@ -40,8 +42,9 @@ def conv(ifile, ofile):
     shutil.move('/tmp/convwork.md', ofile)
 
 ma = [
-    ('qf-k.md', 'qf-ko.md'),
-#    ('qf-p.md', 'qf-po.md')
+#    ('qf-k.md', 'qf-ko.md'),
+#    ('qf-p.md', 'qf-po.md'),
+    ('ci-m.md', 'ci-mo.md')
 ]
 
 if __name__ == '__main__':
